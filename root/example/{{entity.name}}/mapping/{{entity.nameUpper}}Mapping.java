@@ -34,30 +34,13 @@ public class {{entity.nameUpper}}Mapping {
         public {{entity.nameUpper}}Response convert({{entity.nameUpper}}Doc {{entity.name}}Doc) {
             return {{entity.nameUpper}}Response.builder()
                 {{#entityProperties}}
-                    .{{name}}({{entity.name}}Request.get{{nameUpper}}())
+                    .{{name}}({{entity.name}}Doc.get{{nameUpper}}())
                 {{/entityProperties}}
                     .build();
         }
 
         @Override
         public {{entity.nameUpper}}Doc unmapping({{entity.nameUpper}}Response {{entity.name}}Response) {
-            throw new RuntimeException("dont use this");
-        }
-    }
-
-    public static class ResponseFullMapping extends BaseMapping<{{entity.nameUpper}}Doc, {{entity.nameUpper}}FullResponse> {
-
-        @Override
-        public {{entity.nameUpper}}FullResponse convert({{entity.nameUpper}}Doc {{entity.name}}Doc) {
-            return {{entity.nameUpper}}FullResponse.builder()
-                {{#entityProperties}}
-                    .{{name}}({{entity.name}}Request.get{{nameUpper}}())
-                {{/entityProperties}}
-                    .build();
-        }
-
-        @Override
-        public {{entity.nameUpper}}Doc unmapping({{entity.nameUpper}}FullResponse response) {
             throw new RuntimeException("dont use this");
         }
     }
@@ -81,7 +64,6 @@ public class {{entity.nameUpper}}Mapping {
 
     private final RequestMapping request = new RequestMapping();
     private final ResponseMapping response = new ResponseMapping();
-    private final ResponseFullMapping responseFull = new ResponseFullMapping();
     private final SearchMapping search = new SearchMapping();
 
     public static {{entity.nameUpper}}Mapping getInstance(){

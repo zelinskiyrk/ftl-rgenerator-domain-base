@@ -3,9 +3,7 @@ package {{path}}.{{entity.name}}.controller;
 import {{path}}.base.api.request.SearchRequest;
 import {{path}}.base.api.response.OkResponse;
 import {{path}}.base.api.response.SearchResponse;
-import {{path}}.{{entity.name}}.api.request.RegistrationRequest;
 import {{path}}.{{entity.name}}.api.request.{{entity.nameUpper}}Request;
-import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}FullResponse;
 import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}Response;
 import {{path}}.{{entity.name}}.exception.{{entity.nameUpper}}ExistException;
 import {{path}}.{{entity.name}}.exception.{{entity.nameUpper}}NotExistException;
@@ -32,7 +30,7 @@ public class {{entity.nameUpper}}ApiController {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 400, message = "{{entity.nameUpper}} already exist")
     })
-    public OkResponse<{{entity.nameUpper}}FullResponse> registration(@RequestBody RegistrationRequest request) throws {{entity.nameUpper}}ExistException {
+    public OkResponse<{{entity.nameUpper}}Response> registration(@RequestBody {{entity.nameUpper}}Request request) throws {{entity.nameUpper}}ExistException {
         return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert({{entity.name}}ApiService.create(request)));
     }
 
@@ -75,7 +73,7 @@ public class {{entity.nameUpper}}ApiController {
                     @ApiResponse(code = 400, message = "{{entity.nameUpper}} ID invalid")
             }
     )
-    public OkResponse<{{entity.nameUpper}}FullResponse> updateById(
+    public OkResponse<{{entity.nameUpper}}Response> updateById(
             @ApiParam(value = "{{entity.nameUpper}} ID") @PathVariable String id,
             @RequestBody {{entity.nameUpper}}Request {{entity.name}}Request
             ) throws {{entity.nameUpper}}NotExistException {

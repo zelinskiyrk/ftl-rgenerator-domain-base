@@ -1,8 +1,8 @@
 package {{path}}.{{entity.name}}.service;
 
+import {{path}}.{{entity.name}}.mapping.{{entity.nameUpper}}Mapping;
 import {{path}}.base.api.request.SearchRequest;
 import {{path}}.base.api.response.SearchResponse;
-import {{path}}.{{entity.name}}.api.request.RegistrationRequest;
 import {{path}}.{{entity.name}}.api.request.{{entity.nameUpper}}Request;
 import {{path}}.{{entity.name}}.exception.{{entity.nameUpper}}ExistException;
 import {{path}}.{{entity.name}}.exception.{{entity.nameUpper}}NotExistException;
@@ -14,8 +14,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
