@@ -31,7 +31,7 @@ public class {{entity.nameUpper}}ApiController {
             @ApiResponse(code = 400, message = "{{entity.nameUpper}} already exist")
     })
     public OkResponse<{{entity.nameUpper}}Response> registration(@RequestBody {{entity.nameUpper}}Request request) throws {{entity.nameUpper}}ExistException {
-        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert({{entity.name}}ApiService.create(request)));
+        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponse().convert({{entity.name}}ApiService.create(request)));
     }
 
     @GetMapping({{entity.nameUpper}}ApiRoutes.BY_ID)
@@ -45,7 +45,7 @@ public class {{entity.nameUpper}}ApiController {
     public OkResponse<{{entity.nameUpper}}Response> byId(
             @ApiParam(value = "{{entity.nameUpper}} ID") @PathVariable ObjectId id
     ) throws ChangeSetPersister.NotFoundException {
-        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert(
+        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponse().convert(
                 {{entity.name}}ApiService.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new)
         ));
     }
@@ -77,7 +77,7 @@ public class {{entity.nameUpper}}ApiController {
             @ApiParam(value = "{{entity.nameUpper}} ID") @PathVariable String id,
             @RequestBody {{entity.nameUpper}}Request {{entity.name}}Request
             ) throws {{entity.nameUpper}}NotExistException {
-        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponseFull().convert(
+        return OkResponse.of({{entity.nameUpper}}Mapping.getInstance().getResponse().convert(
                 {{entity.name}}ApiService.update({{entity.name}}Request)
         ));
     }
